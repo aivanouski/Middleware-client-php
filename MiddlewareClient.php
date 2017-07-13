@@ -2,6 +2,11 @@
 
 include "api/getCollection.php";
 
+/**
+ * Class MiddlewareClient
+ * @description - entry point
+ * @param host - the api host
+ */
 class MiddlewareClient {
 
     private $HOST = '';

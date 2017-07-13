@@ -1,6 +1,7 @@
 <?php
 
 include "api/getCollection.php";
+include "api/addAccount.php";
 
 /**
  * Class MiddlewareClient
@@ -24,5 +25,8 @@ class MiddlewareClient {
         return getCollection($this->HOST, 'transactions', null, $query, $opts);
     }
 
+    public function addAccount($address){
+        return addAccount($this->HOST, $address);
+    }
 
 }

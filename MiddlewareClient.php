@@ -2,6 +2,7 @@
 
 include "api/getCollection.php";
 include "api/addFilter.php";
+include "api/removeFilter.php";
 
 /**
  * Class MiddlewareClient
@@ -27,6 +28,10 @@ class MiddlewareClient {
 
     public function addFilter($callback, $event, $filter){
         return addFilter($this->HOST, $callback, $event, $filter);
+    }
+
+    public function removeFilter($hash){
+        return removeFilter($this->HOST, $hash);
     }
 
 }

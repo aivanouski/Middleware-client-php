@@ -1,14 +1,14 @@
 <?php
 
-function addFilter($host, $callback, $event, $filter) {
+function addFilter($host, $event, $filter) {
 
     $ch = curl_init();
 
-    $data = array("callback" => $callback, "event" => $event, "filter" => $filter);
+    $data = array("event" => $event, "filter" => $filter);
     $data_string = json_encode($data);
 
 
-    curl_setopt($ch, CURLOPT_URL, $host . "/events/listener");
+    curl_setopt($ch, CURLOPT_URL, $host . "/eventlistener");
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER , 1);

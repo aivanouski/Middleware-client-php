@@ -18,9 +18,7 @@ class MiddlewareClient {
 
     private $HOST = '';
 
-    function __construct() {}
-
-    function __construct1($host) {
+    function __construct($host) {
         $this->HOST = $host;
     }
 
@@ -33,8 +31,8 @@ class MiddlewareClient {
         return getCollection($this->HOST, 'transactions', null, $query, $opts);
     }
 
-    public function addFilter($callback, $event, $filter){
-        return addFilter($this->HOST, $callback, $event, $filter);
+    public function addFilter($event, $filter){
+        return addFilter($this->HOST, $event, $filter);
     }
 
     public function removeFilter($hash){

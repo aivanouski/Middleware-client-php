@@ -18,7 +18,9 @@ class MiddlewareClient {
 
     private $HOST = '';
 
-    function __construct($host) {
+    function __construct() {}
+
+    function __construct1($host) {
         $this->HOST = $host;
     }
 

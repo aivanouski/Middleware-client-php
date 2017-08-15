@@ -1,6 +1,7 @@
 <?php
 
 include "api/getCollection.php";
+include "api/addAccount.php";
 include "api/addFilter.php";
 include "api/removeFilter.php";
 include "api/EventWorker.php";
@@ -45,4 +46,15 @@ class MiddlewareClient {
         $worker = new EventWorker($connection);
         $worker->listen($events);
     }
+
+
+    public function addAccount($address){
+        return addAccount($this->HOST, $address);
+    }
+
+    public function removeAccount($address){
+        return removeAccount($this->HOST, $address);
+    }
+
+
 }

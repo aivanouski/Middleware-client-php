@@ -2,8 +2,6 @@
 
 include "api/getCollection.php";
 include "api/addAccount.php";
-include "api/addFilter.php";
-include "api/removeFilter.php";
 include "api/EventWorker.php";
 
 require_once __DIR__ . '../vendor/autoload.php';
@@ -32,19 +30,11 @@ class MiddlewareClient {
         return getCollection($this->HOST, 'transactions', null, $query, $opts);
     }
 
-    public function addFilter($event, $filter){
-        return addFilter($this->HOST, $event, $filter);
-    }
 
-    public function removeFilter($hash){
-        return removeFilter($this->HOST, $hash);
-    }
-
-
-    public function createListener($host, $port, $user, $pass, $events){
+    public function createListener($host, $port, $user, $pass, $event, $consumer_id){
         $connection = new AMQPStreamConnection($host, $port, $user, $pass);
         $worker = new EventWorker($connection);
-        $worker->listen($events);
+        $worker->listen($event, $consumer_id);
     }
 
 

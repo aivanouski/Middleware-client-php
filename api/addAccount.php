@@ -1,14 +1,14 @@
 <?php
 
-function addFilter($host, $event, $filter) {
+function addAccount($host, $address) {
 
     $ch = curl_init();
 
-    $data = array("event" => $event, "filter" => $filter);
+    $data = array("address" => $address);
     $data_string = json_encode($data);
 
 
-    curl_setopt($ch, CURLOPT_URL, $host . "/eventlistener");
+    curl_setopt($ch, CURLOPT_URL, $host . "/transactions/account");
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER , 1);

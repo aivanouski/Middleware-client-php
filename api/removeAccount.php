@@ -1,14 +1,14 @@
 <?php
 
-function removeFilter($host, $hash) {
+function removeAccount($host, $address) {
 
     $ch = curl_init();
 
-    $data = array("id" => $hash);
+    $data = array("address" => $address);
     $data_string = json_encode($data);
 
 
-    curl_setopt($ch, CURLOPT_URL, $host . "/events/listener");
+    curl_setopt($ch, CURLOPT_URL, $host . "/transactions/account");
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
